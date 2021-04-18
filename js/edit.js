@@ -1,23 +1,23 @@
-import { AlunosService } from './Services/alunos.service.js'
-import { MateriasService } from './Services/materias.service.js'
-import { EditAlunoView } from './Views/EditAluno.view.js'
-import { EditAlunoController } from './Controllers/editAluno.controller.js'
+import { StudentsService } from './Services/students.service.js'
+import { SubjectsService } from './Services/subjects.service.js'
+import { EditStudentView } from './Views/editStudent.view.js'
+import { EditStudentController } from './Controllers/editStudent.controller.js'
 
-const alunosService = new AlunosService()
+const studentsService = new StudentsService()
 
 const paramsString = window.location.search
 const URLParams = new URLSearchParams(paramsString)
 const id = parseInt(URLParams.get('id'))
-const aluno = alunosService.searchById(id)
-document.getElementById('first_name').value = aluno.nome
+const student = studentsService.searchById(id)
+document.getElementById('first_name').value = student.name
 
-const editAlunoView = new EditAlunoView(document.querySelector("[data-edit-aluno-form]"), new MateriasService().materias)
-const editAlunoController = new EditAlunoController(aluno, editAlunoView, alunosService)
+const editStudentView = new EditStudentView(document.querySelector("[data-edit-student-form]"), new SubjectsService().subjects)
+const editStudentController = new EditStudentController(student, editStudentView, studentsService)
 
 document.querySelector("form").addEventListener("submit", function (e) {
     e.preventDefault()
-    const nome = document.querySelector("#first_name").value
-    editAlunoController.edit(aluno, nome)
+    const name = document.querySelector("#first_name").value
+    editStudentController.edit(student, name)
 
     window.location.assign("index.html")
 })
