@@ -1,4 +1,4 @@
-import { StudentModel } from '../Models/aluno.model.js'
+import { StudentModel } from '../Models/student.model.js'
 
 export class StudentsService {
     constructor() {
