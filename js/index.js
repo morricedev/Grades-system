@@ -5,7 +5,7 @@ import { SubjectsService } from './Services/subjects.service.js'
 
 const studentsService = new StudentsService()
 
-const studentsView = new StudentsView(document.querySelector('[data-table-alunos]'), new SubjectsService().subjects)
+const studentsView = new StudentsView(document.querySelector('[data-table-students]'), new SubjectsService().subjects)
 
 const studentsController = new StudentsController(studentsService, studentsView)
 

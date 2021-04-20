@@ -15,7 +15,11 @@ export class EditStudentController {
 
         subjectsRow.forEach(row => {
             const gradesRow = Array.from(row.querySelectorAll("[data-trimestre]"))
-            grades[row.getAttribute("data-subject")] = gradesRow.map(grade => parseFloat(grade.value) || 0)
+            gradesRow.forEach(grade => {
+                if (grade.value !== "") {
+                    grades[row.getAttribute("data-subject")] = gradesRow.map(grade => parseFloat(grade.value) || 0)
+                }
+            })
         })
 
         student.grades = grades

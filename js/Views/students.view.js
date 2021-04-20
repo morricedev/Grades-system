@@ -12,39 +12,39 @@ export class StudentsView {
         const trHeader = document.createElement('tr')
         trHeader.innerHTML = "<td>Nome</td>"
 
-        let trHeaderMaterias = this.subjects.map(subject => {
+        let trHeaderSubjects = this.subjects.map(subject => {
             return "<td>" + subject[0].toUpperCase() + subject.substr(1) + "</td>"
         }).join("")
 
-        trHeader.innerHTML += trHeaderMaterias
+        trHeader.innerHTML += trHeaderSubjects
 
         this.tableHeader.appendChild(trHeader)
     }
 
     renderStudents(students) {
         this.tableBody.innerHTML = ''
-        students.forEach(student => {
+        students.forEach(({ _id, name, grades, average }) => {
             const trBody = document.createElement('tr')
-            let tdBody = `<td><a href="edit.html?id=${student._id}">${student.name}</a></td>`
+            let tdBody = `<td><a href="edit.html?id=${_id}">${name}</a></td>`
 
             let found = false
 
             this.subjects.forEach(subject => {
-                if (subject in student.grades) {
+                if (subject in grades) {
                     found = true
                 }
             })
 
             if (found) {
                 this.subjects.forEach(subject => {
-                    tdBody += `<td> ${student.average[subject] !== undefined ?
-                        student.average[subject] :
-                        `<a href="edit.html?id=${student._id}">Incluir nota</a>`}
+                    tdBody += `<td> ${average[subject] !== undefined ?
+                        average[subject].toFixed(2) :
+                        `<a href="edit.html?id=${_id}">Incluir nota</a>`}
                                </td>`
                 })
             } else {
                 tdBody += `<td colspan="${this.subjects.length}">
-                <a href="edit.html?id=${student._id}">Incluir notas</a>
+                <a href="edit.html?id=${_id}">Incluir notas</a>
                 </td>`
             }
 

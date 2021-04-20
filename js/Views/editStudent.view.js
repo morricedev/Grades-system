@@ -13,16 +13,16 @@ export class EditStudentView {
           <input id="subject_${subject}" type="text" class="validate" value="${subject[0].toUpperCase() + subject.substring(1)}"disabled/>
         </div>
         <div class="input-field col s2">
-          <input data-trimestre="0" id="grade_${subject}_0" type="number" class="validate" value="${student.grades[subject]?.[0]}"/>
+          <input data-trimestre="0" id="grade_${subject}_0" type="number" min="0" max="10" step="0.010" class="validate" value="${student.grades[subject]?.[0]}"/>
         </div>
         <div class="input-field col s2">
-          <input data-trimestre="1" id="grade_${subject}_1" type="number" class="validate" value="${student.grades[subject]?.[1]}" />
+          <input data-trimestre="1" id="grade_${subject}_1" type="number" min="0" max="10" step="0.010" class="validate" value="${student.grades[subject]?.[1]}" />
         </div>
         <div class="input-field col s2">
-          <input data-trimestre="2" id="grade_${subject}_2" type="number" class="validate" value="${student.grades[subject]?.[2]}" />
+          <input data-trimestre="2" id="grade_${subject}_2" type="number" min="0" max="10" step="0.010" class="validate" value="${student.grades[subject]?.[2]}" />
         </div>
         <div class="input-field col s2">
-          <input data-trimestre="3" id="grade_${subject}_3" type="number" class="validate" value="${student.grades[subject]?.[3]}" />
+          <input data-trimestre="3" id="grade_${subject}_3" type="number" min="0" max="10" step="0.010" class="validate" value="${student.grades[subject]?.[3]}" />
         </div>
       </div>
         `).join("")
